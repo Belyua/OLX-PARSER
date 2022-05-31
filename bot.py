@@ -39,10 +39,6 @@ def telegram_bot(token):
                 message.chat.id,
                 "Damn...Something was wrong...")
 
-    @bot.message_handler(content_types='text')
-    def message_reply(message):
-        if message.text == "Кнопка":
-            bot.send_message(message.chat.id,"acab")
 
     bot.infinity_polling()
 
