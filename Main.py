@@ -11,20 +11,7 @@ start_time = time.time()
 
 
 def get_data():
-    cur_time = datetime.datetime.now().strftime("%d_%m_%y_%h_%m")
-
-    with open(f"rooms_{cur_time}.csv", "w", encoding="utf-8") as csv_file:
-        writer = csv.writer(csv_file, delimiter=',')
-
-        writer.writerow(
-            (
-                "room_title",
-                "price",
-                "link"
-
-            )
-        )
-
+   
     headers = {
         "accept": "*/*",
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36(KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36"
@@ -61,9 +48,7 @@ def get_data():
                 price = "no price"
 
             try:
-                link = room_data[0].find("a").text.strip()
-
-                link = ":".join([bp.text for bp in link])
+                link = bi.find("a")['href']
 
             except:
                 link = "no link"
